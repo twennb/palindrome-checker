@@ -7,8 +7,21 @@
 # ask to check another input or exit
 
 
-def user_input():
+def get_user_input():
     """gets input from user that they wish to check for palindrome"""
+    print("=================================")
+    while True:
+        validation_list = []
+        palindrome_input = input("Please enter your palindrome query: ")
+        for character in palindrome_input:
+            if character.isalpha() or character.isspace():
+                pass
+            else:
+                validation_list.append(character)
+        if not validation_list:
+            break
+        print("Invalid input! Please only enter letters and spaces.")
+    return palindrome_input
 
 
 def reverse_input():
@@ -21,6 +34,8 @@ def check_palindrome():
 
 def main():
     """the main function"""
+    potential_palindrome = get_user_input()
+    print(potential_palindrome)
 
 
 if __name__ == "__main__":
