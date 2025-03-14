@@ -32,13 +32,17 @@ def reverse_input(palindrome_input):
 
 def check_palindrome(normal, reverse):
     """checks whether a passed input is the same backwards as forwards"""
+    if normal == reverse:
+        print(f"\nYour input '{normal}' is a palindrome!")
+    else:
+        print(f"\nYour input '{normal}' is not a palindrome!")
 
 
 def main():
     """the main function"""
     potential_palindrome = get_user_input()
     reverse_palindrome = reverse_input(potential_palindrome)
-    print(potential_palindrome, "\n", reverse_palindrome)
+    check_palindrome(potential_palindrome, reverse_palindrome)
 
 
 if __name__ == "__main__":
