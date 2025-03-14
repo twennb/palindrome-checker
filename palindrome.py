@@ -21,21 +21,24 @@ def get_user_input():
         if not validation_list:
             break
         print("Invalid input! Please only enter letters and spaces.")
-    return palindrome_input
+    return palindrome_input.strip()
 
 
-def reverse_input():
+def reverse_input(palindrome_input):
     """reverses the user's input"""
+    palindrome_reverse = palindrome_input[::-1]
+    return palindrome_reverse.strip()
 
 
-def check_palindrome():
+def check_palindrome(normal, reverse):
     """checks whether a passed input is the same backwards as forwards"""
 
 
 def main():
     """the main function"""
     potential_palindrome = get_user_input()
-    print(potential_palindrome)
+    reverse_palindrome = reverse_input(potential_palindrome)
+    print(potential_palindrome, "\n", reverse_palindrome)
 
 
 if __name__ == "__main__":
