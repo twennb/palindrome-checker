@@ -28,16 +28,30 @@ def get_user_input():
 
 def reverse_input(palindrome_input):
     """reverses the user's input"""
+    # palindrome_input: the user's input from get_user_input()
     palindrome_reverse = palindrome_input[::-1]
     return palindrome_reverse.strip()
 
 
-def check_palindrome(normal, reverse):
+def clean_input(normal, reverse):
+    """this function removes spaces in the input and makes everything lowercase to prepare for comparison"""
+    # normal: the user's input
+    # reverse: reversed input from reverse_input()
+    cleaned_normal = normal.replace(" ", "")
+    cleaned_reverse = reverse.replace(" ", "")
+
+    return cleaned_normal.lower(), cleaned_reverse.lower()
+
+
+def check_palindrome(normal, reverse, original):
     """checks whether a passed input is the same backwards as forwards"""
-    if normal.lower() == reverse.lower():
-        print(f"\nYour input '{normal}' is a palindrome!")
+    # normal: the cleaned user input
+    # reverse: the cleaned reverse user input
+    # original: the actual user input
+    if normal == reverse:
+        print(f"\nYour input '{original}' is a palindrome!")
     else:
-        print(f"\nYour input '{normal}' is not a palindrome!")
+        print(f"\nYour input '{original}' is not a palindrome!")
 
 
 def check_again():
@@ -58,7 +72,9 @@ def main():
     """the main function"""
     potential_palindrome = get_user_input()
     reverse_palindrome = reverse_input(potential_palindrome)
-    check_palindrome(potential_palindrome, reverse_palindrome)
+    cleaned_normal, cleaned_reverse = clean_input(
+        potential_palindrome, reverse_palindrome)
+    check_palindrome(cleaned_normal, cleaned_reverse, potential_palindrome)
     check_again()
 
 
